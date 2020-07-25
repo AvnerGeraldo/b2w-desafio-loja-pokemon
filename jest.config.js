@@ -1,8 +1,7 @@
 module.exports = {
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts',
-    '<rootDir>/src/**/*.tsx'
+    '<rootDir>/src/**/*.{ts, tsx, js, jsx}',
   ],
 
   // The directory where Jest should output its coverage files
@@ -21,7 +20,7 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '.+\\.ts?(x)$': 'ts-jest'
+    '.+\\.jsx$': 'ts-jest'
   },
 
   moduleFileExtensions: [
@@ -32,5 +31,6 @@ module.exports = {
     "json",
     "node"
   ],
-  setupFilesAfterEnv: ["<rootDir>src/setupTests.js"]
+  setupFilesAfterEnv: ["<rootDir>src/setupTests.js"],
+  testPathIgnorePatterns: ["/node_modules/", "<rootDir>/src/*.html"]
 }

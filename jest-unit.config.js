@@ -1,5 +1,5 @@
 const jestConfig = require('./jest.config')
 
-jestConfig.testMatch = ['<rootDir>/src/**/*.spec.ts?(x)']
+jestConfig.testMatch = ['<rootDir>/src/**/*.spec.tsx']
 
 module.exports = jestConfig
