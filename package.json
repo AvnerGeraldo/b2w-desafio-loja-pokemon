@@ -1,0 +1,17 @@
+{
+  "name": "b2w-desafio-loja-pokemon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/b2wdigital/desafio-loja-pokemon.git",
+  "author": "Avner <avner.conceicao@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "typescript": "^3.9.7"
+  }
+}
