@@ -20,17 +20,14 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '.+\\.jsx$': 'ts-jest'
+    '.+\\.(ts|tsx)?$': 'ts-jest'
   },
 
   moduleFileExtensions: [
     "ts",
     "tsx",
-    "js",
-    "jsx",
-    "json",
-    "node"
+    "js"
   ],
-  setupFilesAfterEnv: ["<rootDir>src/setupTests.js"],
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.tsx"],
   testPathIgnorePatterns: ["/node_modules/", "<rootDir>/src/*.html"]
 }
