@@ -4,7 +4,7 @@ import pokemonDataReducer from './reducers/pokemonDataReducer'
 import { StoreState } from "./types/storeState";
 
 const rootReducer = combineReducers<StoreState>({
-    pokemonData: pokemonDataReducer
+    pokemonDataStore: pokemonDataReducer
 })
 
 const store = createStore(rootReducer)

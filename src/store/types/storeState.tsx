@@ -1,5 +1,5 @@
-import { StateData } from "../reducers/pokemonDataReducer";
+import { StatePokemonData } from "./pokemonDataTypes";
 
 export type StoreState = {
-    pokemonData: StateData
+    pokemonDataStore: StatePokemonData
 }
