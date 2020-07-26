@@ -2,10 +2,19 @@ import * as React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
 interface PokemonListProps {
-    pokemonData: Array<any>
+    pokemonData?: Array<any>
 }
 
 export default class PokemonList extends React.Component<PokemonListProps, any> {
+
+    componentDidMount() {
+        this.loadPokemonList()
+    }
+
+    loadPokemonList = () => {
+        // Fetch data from API
+    }
+
     render() {
         const { pokemonData } = this.props
         
