@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
+import PokemonItem, { PokemonItemProps } from '../../components/PokemonItem/PokemonItem'
+
 const loadingImage = require('../../assets/images/loading-image.gif')
 
 interface PokemonListProps {
-    pokemonData?: Array<any>
+    pokemonData?: Array<PokemonItemProps>
 }
 
 export default class PokemonList extends React.Component<PokemonListProps, any> {
@@ -46,6 +48,14 @@ export default class PokemonList extends React.Component<PokemonListProps, any> 
                         }}>:(</i></p></Col>
                     </Row>
                 )}
+
+                <Container className="pokemon-list">
+                    {(pokemonData && pokemonData.length > 0) && pokemonData.map((v: PokemonItemProps) => (
+                        <Col key={v.id} md="4" sm="4" xs="12">
+                            <PokemonItem id={v.id} name={v.name} price={v.price} image={v.image} />
+                        </Col>
+                    ))}
+                </Container>
             </Container>
         )
     }
