@@ -13,4 +13,13 @@ describe('PokemonList Container', () => {
         expect(JSON.stringify(instance.props)).toBe(JSON.stringify({ pokemonData: [] }))
         expect(wrapper.find('.error-message-empty-content').text()).toEqual(message)
     });
+
+    it('should try load the data before throw an error message', () => {
+        const wrapper = shallow<PokemonList>(<PokemonList pokemonData={[]}/>)
+        const instance = wrapper.instance()
+        jest.spyOn(instance, 'loadPokemonList')
+        instance.componentDidMount()
+
+        expect(instance.loadPokemonList).toHaveBeenCalledTimes(1)
+    });
 });
