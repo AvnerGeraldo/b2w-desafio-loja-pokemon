@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Row, Button, Col, Container } from 'react-bootstrap'
+import { Button, Col, Container } from 'react-bootstrap'
 
 export type PokemonItemProps = {
     id: number
