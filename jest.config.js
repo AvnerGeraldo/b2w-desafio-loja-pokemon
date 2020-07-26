@@ -28,6 +28,9 @@ module.exports = {
     "tsx",
     "js"
   ],
+  moduleNameMapper: {
+    "\\.(jpg|jpeg|png|gif)$": "file-loader"
+  },
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.tsx"],
   testPathIgnorePatterns: ["/node_modules/", "<rootDir>/src/*.html"]
 }
