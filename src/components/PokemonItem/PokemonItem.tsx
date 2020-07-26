@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Container, Row, Button } from 'react-bootstrap'
+import { Row, Button, Col, Container } from 'react-bootstrap'
 
-export interface PokemonItemProps {
+export type PokemonItemProps = {
     id: number
     name: string
     price: number
@@ -9,18 +9,18 @@ export interface PokemonItemProps {
 }
 
 const imageStyle = {
-    height: '5em',
-    width: '5em'
+    height: '100%',
+    width: '100%'
 }
 
 const PokemonItem = (props: PokemonItemProps) => {
     const { id, name, price, image } = props
     return (
         <Container className="pokemon-list-item">
-            <Row><span className="hide pokemon-id">{id}</span><img src={image} style={imageStyle} /></Row>
-            <Row className="text-center pokemon-name"><span>{name}</span></Row>
-            <Row className="text-center pokemon-price"><span>{price}</span></Row>
-            <Row className="justify-content-center"><Button>Adicionar <i>Icon cart</i></Button></Row>
+            <Col><span className="d-none pokemon-id">{id}</span><img src={image} style={imageStyle} /></Col>
+            <Col className="text-center text-capitalize pokemon-name"><span>{name}</span></Col>
+            <Col className="text-center mt-1 mb-2 pokemon-price">R$ <span>{price.toLocaleString('pt-br')}</span></Col>
+            <Col className="text-center"><Button>Adicionar <i>Icon cart</i></Button></Col>
         </Container>
     )
 }

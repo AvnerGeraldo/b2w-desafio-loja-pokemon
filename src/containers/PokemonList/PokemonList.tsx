@@ -1,62 +1,65 @@
 import * as React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import styled from 'styled-components'
 
 import PokemonItem, { PokemonItemProps } from '../../components/PokemonItem/PokemonItem'
 
 const loadingImage = require('../../assets/images/loading-image.gif')
 
-interface PokemonListProps {
+const ColPokemonItem = styled.div`
+    border: 2px solid #ADD8E6;
+    padding: 5px 0px;
+    box-shadow: 3px 3px 4px #ADD8E6;
+    cursor: pointer;
+    margin: 2px 5px;
+
+    &:hover {
+        background-color: #ADD8E6;
+        opacity: 0.8;
+    }
+`
+
+export type PokemonListProps = {
+    loadingData?: boolean
     pokemonData?: Array<PokemonItemProps>
 }
 
-export default class PokemonList extends React.Component<PokemonListProps, any> {
-    constructor(props: PokemonListProps) {
-        super(props)
-        this.state = {
-            loadingData: false
-        }
-    }
+const PokemonList = (props: PokemonListProps) => {
+    const { loadingData, pokemonData } = props
+    
+    return (
+        <Container fluid className="h-100">
+            { loadingData && (
+                <Row className="align-items-center">
+                    <Col className="text-center loading-data-image">
+                        <img src={loadingImage.default} height="15%" width="15%" />
+                    </Col>
+                </Row>
+            )}
 
-    componentDidMount() {
-        this.loadPokemonList()
-    }
+            {(pokemonData && pokemonData.length === 0 && !loadingData) && (
+                <Row className="align-items-center">
+                    <Col className="text-center error-message-empty-content">
+                        <h3>Não há dados para serem exibidos.</h3><br /> 
+                        <p><i style={{
+                        fontSize: '4em'
+                    }}>:(</i></p></Col>
+                </Row>
+            )}
 
-    loadPokemonList = () => {
-        // Fetch data from API
-    }
+          
 
-    render() {
-        const { pokemonData } = this.props
-        const { loadingData } = this.state
-        
-        return (
-            <Container fluid className="h-100">
-                { loadingData && (
-                    <Row className="align-items-center">
-                        <Col className="text-center loading-data-image">
-                            <img src={loadingImage.default} height="15%" width="15%" />
-                        </Col>
-                    </Row>
-                )}
-
-                {(pokemonData && pokemonData.length === 0) && (
-                    <Row className="align-items-center">
-                        <Col className="text-center error-message-empty-content">
-                            <h3>Não há dados para serem exibidos.</h3><br /> 
-                            <p><i style={{
-                            fontSize: '4em'
-                        }}>:(</i></p></Col>
-                    </Row>
-                )}
-
-                <Container className="pokemon-list">
+            <Container className="pokemon-list" fluid>
+                <Row className="justify-content-center">
                     {(pokemonData && pokemonData.length > 0) && pokemonData.map((v: PokemonItemProps) => (
-                        <Col key={v.id} md="4" sm="4" xs="12">
+                        <ColPokemonItem key={v.id} className="col-lg-2 col-md-4 col-sm-3 col-12">
                             <PokemonItem id={v.id} name={v.name} price={v.price} image={v.image} />
-                        </Col>
+                        </ColPokemonItem>
                     ))}
-                </Container>
+                </Row>
             </Container>
-        )
-    }
+        </Container>
+    )
 }
+
+export default PokemonList
