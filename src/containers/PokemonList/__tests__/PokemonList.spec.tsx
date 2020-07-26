@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import PokemonList from '../PokemonList'
 
@@ -21,5 +21,33 @@ describe('PokemonList Container', () => {
         instance.componentDidMount()
 
         expect(instance.loadPokemonList).toHaveBeenCalledTimes(1)
+    });
+
+    it('should show an image loading when trying to load data', async (done) => {
+        const wrapper = shallow<PokemonList>(<PokemonList />)
+        const instance = wrapper.instance()
+        jest.spyOn(instance, 'loadPokemonList').mockImplementationOnce(() => {
+            wrapper.setState({
+                loadingData: true
+            })
+
+            expect(instance.state.loadingData).toBe(true)
+            expect(wrapper.find('.loading-data-image')).toHaveLength(1)
+            
+            new Promise((resolve) => {
+                setTimeout(() => resolve(), 2000)
+            })
+            .then(() => {
+                wrapper.setState({
+                    loadingData: false
+                })
+
+                expect(instance.state.loadingData).toBe(false)
+                expect(wrapper.find('.loading-data-image')).toHaveLength(0)
+                done()
+            })
+            .catch((error) => { throw new Error(error) })
+        })
+        instance.componentDidMount()
     });
 });
