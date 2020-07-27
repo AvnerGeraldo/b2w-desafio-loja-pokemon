@@ -21,3 +21,18 @@ export const fetchPokemonDetail = async (url: string) => {
 
     return await responseDetails.json()
 }
+
+export const fetchPokemonByName = async (pokemonName: string) => {
+    const name = pokemonName.toLocaleLowerCase().replace(/[^a-zA-Zs-]/g, "")
+    const url = `https://pokeapi.co/api/v2/pokemon/${name}`
+
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        mode: 'cors'
+    })
+
+    return await response.json()
+}

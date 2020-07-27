@@ -11,11 +11,16 @@ const topBarStyle = {
     backgroundColor: '#4682B4'
 }
 
-const TopBar = () => {
+interface ITopBar {
+    loadLocalStorage?: (offset: number, limit: number) => void
+    setPage?: (newPage: number) => void
+}
+
+const TopBar = (props: ITopBar) => {
     return(
         <Row style={topBarStyle}>
             <Col md="2" xs={{ span: 4, order: 1 }}><Logo /></Col>
-            <Col md={{ span: 7, offset: 1, order: 2}} sm={{ span: 7, offset: 1, order: 2 }} xs={{ span: 12, order: 3 }}><SearchBar /></Col>
+            <Col md={{ span: 7, offset: 1, order: 2}} sm={{ span: 7, offset: 1, order: 2 }} xs={{ span: 12, order: 3 }}><SearchBar loadLocalStorage={props.loadLocalStorage} setPage={props.setPage}/></Col>
             <Col md={{ span: 2, order: 3 }} xs={{ span: 4, order: 2 }}><CartButton /></Col>
         </Row>
     )

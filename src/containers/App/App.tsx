@@ -101,12 +101,14 @@ class App extends React.Component<any, StateApp> {
     }
 
     render() {
-        const { cartIsOpen, page } = this.props
+        const { cartIsOpen, page, pokemonDataList } = this.props
         const qtyTotalPages = parseInt(localStorage.getItem('qtyPages'))
         
         return (
             <Container fluid>
-                <TopBar />
+                <TopBar 
+                    loadLocalStorage={this.getPokemonListLocalStorage}
+                    setPage={this.setPage} />
                 <Container fluid className="d-flex align-items: stretch" style={{ width: '100%', paddingRight: 0 }}>
                     <PokemonList />
                     {cartIsOpen && (
@@ -114,7 +116,7 @@ class App extends React.Component<any, StateApp> {
                     )}                    
                 </Container>
                 
-                {page > 0 && (
+                {(pokemonDataList.length > 1 && page > 0) && (
                     <Container fluid style={{ marginTop: 20 }}>
                         <Pagination size="lg" className="justify-content-center">
                             <Pagination.Prev style={{ cursor: 'pointer' }}
@@ -132,9 +134,10 @@ class App extends React.Component<any, StateApp> {
     }
 }
 
-const mapStateToProps = ({ pokemonDataStore: { page }, cartStore: { isOpen } }: StoreState) => ({
+const mapStateToProps = ({ pokemonDataStore: { page, data }, cartStore: { isOpen } }: StoreState) => ({
     page,
-    cartIsOpen: isOpen
+    cartIsOpen: isOpen,
+    pokemonDataList: data
 })
 
 const mapDispatchToPropos = (dispatch: Dispatch<actions.PokemonDataAction>) => ({
