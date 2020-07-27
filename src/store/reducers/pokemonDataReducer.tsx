@@ -1,5 +1,5 @@
 import { PokemonDataAction } from '../actions/pokemonDataAction'
-import { PokemonData, StatePokemonData } from '../types/pokemonDataTypes';
+import { StatePokemonData } from '../types/pokemonDataTypes';
 import { RETRIEVE_POKEMON_DATA, GET_POKEMON_DATA, SET_LOADING_DATA, UPDATE_PAGE } from '../constants/pokemonDataConstants';
 
 const initialState: StatePokemonData = {

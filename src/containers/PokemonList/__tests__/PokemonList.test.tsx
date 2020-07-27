@@ -2,12 +2,12 @@ import 'jsdom-global/register'
 import * as React from 'react'
 import { mount } from 'enzyme'
 import PokemonList from '../PokemonList';
-import { PokemonItemProps } from '../../../components/PokemonItem/PokemonItem';
 import { Provider } from 'react-redux';
 import store from '../../../store';
 import { retrievePokemonData } from '../../../store/actions';
+import { PokemonData } from '../../../store/types/pokemonDataTypes';
 
-const fakeData = (): Array<PokemonItemProps> => {
+const fakeData = (): Array<PokemonData> => {
     const rangeList = Array.from({ length: 10 }, (v,i) => i)
 
     return rangeList.map(v => ({

@@ -2,7 +2,7 @@ import 'jsdom-global/register'
 import * as React from 'react'
 import { shallow, mount } from 'enzyme'
 
-import PokemonList, { PokemonListProps } from '../PokemonList'
+import PokemonList from '../PokemonList'
 import { Provider } from 'react-redux'
 import store from '../../../store'
 import { setLoadingData, retrievePokemonData } from '../../../store/actions'
