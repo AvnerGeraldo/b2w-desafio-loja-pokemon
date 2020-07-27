@@ -34,34 +34,42 @@ class CartSidebar extends React.Component<CartSidebarType, any> {
             color: #fff;
             overflow-x: hidden;
             transition: 0.5s;
+            padding: 5px;
+            min-width: 30vh;
         `
 
         return (
-            <SideBarContainer className="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-12">
+            <SideBarContainer className="col-lg-3 col-md-5 col-sm-5 col-xs-12 col-12">
                 <Row>
-                    <Col className="text-center sb-2 mb-2 lb-2"><h3>Carrinho</h3></Col>
+                    <Col className="text-center sb-2 mb-2 lb-2" style={{
+                        padding: '5px 15px'
+                    }}><h3>Carrinho</h3></Col>
                 </Row>
-                <Container style={{
-                    minHeight: '30vh'
+                <Container fluid style={{
+                    minHeight: '30vh',
+                    padding: '0px 2px'
                 }}>
                     {(cartList && cartList.length > 0) && (
                         cartList.map((item: PokemonData) => {
                             total += item.price
                             return (
                                 <Row key={item.id} style={{
-                                    borderBottom: "1px solid"
+                                    borderBottom: "1px solid",
+                                    paddingLeft: 9
                                 }}>
-                                    <Col lg={2} md={3} sm={3} xs={3}><img src={item.image} width={60} height={60} /></Col>
-                                    <Col className="align-self-center">{item.name}</Col>
-                                    <Col lg={2} md={3} sm={3} xs={3} className="align-self-center">R$ <span>{item.price.toLocaleString('pt-br')}</span></Col>
+                                    <Col lg={2} md={3} sm={3} xs={3} style={{ padding: 0 }}><img src={item.image} width="100%" height="100%" /></Col>
+                                    <Col className="align-self-center text-center">{item.name}</Col>
+                                    <Col lg={4} md={3} sm={3} xs={3} className="align-self-center text-right">R$ <span>{item.price.toLocaleString('pt-br')}</span></Col>
                                 </Row>
                             )
                         })
                     )}
                 </Container>
-                <Row>
+                <Row style={{ padding: '2px' }}>
                     <Col lg={8} md={7} sm={7} xs={8}><h4>Total</h4></Col>
-                    <Col lg={4} md={5} sm={5} xs={4} className="text-right">R$ <span>{total.toLocaleString('pt-br')}</span></Col>
+                    <Col lg={4} md={5} sm={5} xs={4} className="text-right" style={{
+                        padding: '2px 15px'
+                    }}>R$ <span>{total.toLocaleString('pt-br')}</span></Col>
                 </Row>
                 <Row style={{ marginTop: '40px', marginBottom: "15px"}}>
                     <Col>
