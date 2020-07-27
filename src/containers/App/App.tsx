@@ -12,6 +12,7 @@ import { PokemonData } from '../../store/types/pokemonDataTypes';
 import { fetchPokemonList, fetchPokemonDetail } from '../../api';
 import * as actions from '../../store/actions';
 import { Dispatch } from 'redux';
+import CartSidebar from '../CartSidebar/CartSidebar';
 
 interface StateApp {
     loadingData: boolean
@@ -56,9 +57,6 @@ class App extends React.Component<any, StateApp> {
         const pokemonListLocalStorage = JSON.parse(localStorage.getItem('pokemonList'))
 
         if (pokemonListLocalStorage) {
-            /*const qtyPokemonLocalStorage = pokemonListLocalStorage.reduce((acc: number, cur: any) => {
-                return acc + cur.length
-            }, 0)*/
 
             if (offset > offsetLocalStorage || offsetLocalStorage === 0) {
                 const pokemonList = await this.getPokemonList(offset, limit)
@@ -89,14 +87,20 @@ class App extends React.Component<any, StateApp> {
         return (
             <Container fluid>
                 <TopBar />
-                <PokemonList />
+                <Container fluid className="d-flex align-items: stretch" style={{ width: '100%', paddingRight: 0 }}>
+                    <PokemonList />
+                    {this.props.cartIsOpen && (
+                        <CartSidebar />
+                    )}
+                </Container>
             </Container>
         )
     }
 }
 
-const mapStateToProps = ({ pokemonDataStore: { page } }: StoreState) => ({
-    page
+const mapStateToProps = ({ pokemonDataStore: { page }, cartStore: { isOpen } }: StoreState) => ({
+    page,
+    cartIsOpen: isOpen
 })
 
 const mapDispatchToPropos = (dispatch: Dispatch<actions.PokemonDataAction>) => ({
