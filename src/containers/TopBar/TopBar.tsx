@@ -8,8 +8,7 @@ import CartButton from '../../components/CartButton/CartButton'
 const topBarStyle = {
     paddingTop: '1.2em',
     paddingBottom: '1.2em',
-    backgroundColor: '#4682B4',
-    marginBottom: '0.5em'
+    backgroundColor: '#4682B4'
 }
 
 const TopBar = () => {
