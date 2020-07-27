@@ -1,4 +1,4 @@
-import { OPEN_CLOSE_CART, UPDATE_CART, REMOVE_ITEM_CART } from "../constants/cartConstants";
+import { OPEN_CLOSE_CART, UPDATE_CART, REMOVE_ITEM_CART, CHECKOUT_CART } from "../constants/cartConstants";
 import { PokemonData } from "../types/pokemonDataTypes";
 
 export interface OpenCloseCart {
@@ -16,7 +16,12 @@ export interface RemoveItemCart {
     payload: number
 }
 
-export type CartActions = OpenCloseCart | UpdateCart | RemoveItemCart
+export interface CheckoutCart {
+    type: CHECKOUT_CART
+}
+
+
+export type CartActions = OpenCloseCart | UpdateCart | RemoveItemCart | CheckoutCart
 
 export const openCloseCart = (status: boolean): OpenCloseCart => ({
     type: OPEN_CLOSE_CART,
@@ -31,4 +36,8 @@ export const updateCart = (pokemon: PokemonData): UpdateCart => ({
 export const removeItemCart = (id: number): RemoveItemCart => ({
     type: REMOVE_ITEM_CART,
     payload: id
+})
+
+export const checkoutCart = (): CheckoutCart => ({
+    type: CHECKOUT_CART
 })
