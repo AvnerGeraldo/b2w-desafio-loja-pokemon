@@ -1,9 +1,11 @@
 import { StateCart } from "../types/cartTypes"
 import { CartActions } from "../actions/cartActions"
-import { OPEN_CLOSE_CART } from "../constants/cartConstants"
+import { OPEN_CLOSE_CART, UPDATE_CART } from "../constants/cartConstants"
+import { PokemonData } from "../types/pokemonDataTypes"
 
 const initialState: StateCart = {
-    isOpen: true
+    isOpen: true,
+    cartList: []
 }
 
 const reducer = (state: StateCart = initialState, action: CartActions): StateCart => {
@@ -12,6 +14,14 @@ const reducer = (state: StateCart = initialState, action: CartActions): StateCar
             return {
                 ...state,
                 isOpen: !state.isOpen
+            }
+            
+        case UPDATE_CART:
+            const newCartList: Array<PokemonData> = [...state.cartList, action.payload]
+
+            return {
+                ...state,
+                cartList: newCartList
             }
     }
 
