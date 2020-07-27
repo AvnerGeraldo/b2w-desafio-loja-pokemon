@@ -10,6 +10,7 @@ import * as actions from '../../store/actions'
 
 import styled from 'styled-components'
 import { Dispatch } from 'redux'
+import CartModal from '../../components/CartModal/CartModal'
 
 interface ICartSidebar {
     isOpen: boolean
@@ -20,11 +21,29 @@ type CartSidebarType = {
     isOpen: boolean
     cartList?: Array<PokemonData>
     removeItem?: (id: number) => void
+    checkoutCart?: () => void
+    opeClose?: (status: boolean) => void
 }
 
 class CartSidebar extends React.Component<CartSidebarType, any> {
     constructor(props: ICartSidebar) {
         super(props)
+
+        this.state = {
+            showModal: false
+        }
+    }
+
+    setModalShow = (status: boolean) => {
+        this.setState({
+            showModal: status
+        })
+    }
+
+    checkoutModal = () => {
+        this.setModalShow(false)
+        this.props.opeClose(true)
+        this.props.checkoutCart()
     }
 
     render() {
@@ -84,8 +103,19 @@ class CartSidebar extends React.Component<CartSidebarType, any> {
                 </Row>
                 <Row style={{ marginTop: '40px', marginBottom: "15px"}}>
                     <Col>
-                        <Button className="btn btn-primary btn-lg btn-block">Finalizar</Button>
+                        <Button 
+                            className="btn btn-primary btn-lg btn-block"
+                            onClick={() => this.setModalShow(true)}
+                            disabled={!(cartList && cartList.length > 0)}
+                            >Finalizar</Button>
                     </Col>
+                </Row>
+                <Row>
+                    <CartModal 
+                        total={total}
+                        show={this.state.showModal} 
+                        onHide={ () => this.checkoutModal() }
+                        />
                 </Row>
             </SideBarContainer>
         )
@@ -97,8 +127,10 @@ const mapStateToProps = ({ cartStore: { isOpen, cartList } }: StoreState) => ({
     cartList
 })
 
-const mapDispatchToProps = (dispatch: Dispatch<actions.RemoveItemCart>) => ({
-    removeItem: (id: number) => dispatch(actions.removeItemCart(id))
+const mapDispatchToProps = (dispatch: Dispatch<actions.RemoveItemCart | actions.CheckoutCart | actions.OpenCloseCart>) => ({
+    removeItem: (id: number) => dispatch(actions.removeItemCart(id)),
+    checkoutCart: () => dispatch(actions.checkoutCart()),
+    opeClose: (status: boolean) => dispatch(actions.openCloseCart(status))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartSidebar)

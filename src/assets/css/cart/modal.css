@@ -1,0 +1,7 @@
+.modal-content{
+    border: 18px solid red;
+}
+
+.modal-header {
+    border-bottom: none;
+}
