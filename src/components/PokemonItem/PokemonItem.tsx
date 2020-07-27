@@ -26,14 +26,14 @@ const addToCart = (props: IPokemonItem) => {
     const { id, name, price, image, addPokemonToCart, openCloseCart, isOpen } = props
 
     addPokemonToCart({ id, name, price, image })
-
+    
     if (!isOpen) {
         openCloseCart(!isOpen)
-    }
 
-    setTimeout(() => {
-        openCloseCart(false)
-    }, 3000)
+        setTimeout(() => {
+            openCloseCart(false)
+        }, 3000)
+    }
 }
 
 const PokemonItem = (props: IPokemonItem) => {
