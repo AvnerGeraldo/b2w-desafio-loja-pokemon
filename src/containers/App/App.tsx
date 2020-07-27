@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Pagination } from 'react-bootstrap'
 import { connect } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,9 +30,12 @@ class App extends React.Component<any, StateApp> {
     }
 
     private getPokemonList = async (offset: number, limit: number): Promise<Array<PokemonData>> => {
+        const qtyPages = localStorage.getItem('qtyPages')
         const pokemonList = await fetchPokemonList(offset, limit)
 
         if (!pokemonList.results) throw new Error('Não foi possível puxar Pokemon')
+
+        if (!qtyPages) this.setQtyPages(pokemonList.count, limit)
 
         const response: Array<PokemonData> = await Promise.all(
             pokemonList.results.map(async (pokemon: any) => {
@@ -52,19 +55,25 @@ class App extends React.Component<any, StateApp> {
         return response
     }
 
+    private setQtyPages = (count: number, limit: number) => {
+        const pages = count / limit
+        localStorage.setItem('qtyPages', String(Math.ceil(pages)))
+    }
+
     private getPokemonListLocalStorage = async (offset: number, limit: number): Promise<Array<PokemonData>> => {
         const offsetLocalStorage = parseInt(localStorage.getItem('offset'))
         const pokemonListLocalStorage = JSON.parse(localStorage.getItem('pokemonList'))
 
         if (pokemonListLocalStorage) {
-
             if (offset > offsetLocalStorage || offsetLocalStorage === 0) {
                 const pokemonList = await this.getPokemonList(offset, limit)
                 pokemonListLocalStorage.push(pokemonList)
                 localStorage.setItem('offset', String(offsetLocalStorage + limit))
                 localStorage.setItem('pokemonList', JSON.stringify(pokemonListLocalStorage))
-
-                if (offsetLocalStorage === 0) this.props.setActualPage(1)
+            }
+            
+            if (this.props.page === 0) {
+                this.props.setActualPage(1)
             }
         }
 
@@ -78,21 +87,46 @@ class App extends React.Component<any, StateApp> {
         if (!localStorage.getItem('pokemonList')) localStorage.setItem('pokemonList', JSON.stringify([]))
         
         const pokemonList = await this.getPokemonListLocalStorage(offset, limit)
-        const getActualPage = this.props.page
-
+        const getActualPage = (this.props.page > 0) ? this.props.page - 1 : 0
+        
         this.props.updatePokemonData(pokemonList[getActualPage])
     }
 
+    setPage = async (newPage: number) => {
+        const limit = 20
+        const offset = newPage * limit
+
+        this.props.setActualPage(newPage)
+        await this.loadPokemonList(offset, limit)
+    }
+
     render() {
+        const { cartIsOpen, page } = this.props
+        const qtyTotalPages = parseInt(localStorage.getItem('qtyPages'))
+        
         return (
             <Container fluid>
                 <TopBar />
                 <Container fluid className="d-flex align-items: stretch" style={{ width: '100%', paddingRight: 0 }}>
                     <PokemonList />
-                    {this.props.cartIsOpen && (
+                    {cartIsOpen && (
                         <CartSidebar />
-                    )}
+                    )}                    
                 </Container>
+                
+                {page > 0 && (
+                    <Container fluid style={{ marginTop: 20 }}>
+                        <Pagination size="lg" className="justify-content-center">
+                            <Pagination.Prev style={{ cursor: 'pointer' }}
+                                onClick={async () => (page > 1) && await this.setPage(parseInt(this.props.page) - 1)} 
+                                disabled={!(page > 1)} />
+
+                            <Pagination.Next style={{ cursor: 'pointer' }}
+                                onClick={async () => (page >= 1 && page < qtyTotalPages) && await this.setPage(parseInt(this.props.page) + 1)} 
+                                disabled={!(page >= 1 && page < qtyTotalPages)} />
+                        </Pagination>
+                    </Container>
+                )}
             </Container>
         )
     }
