@@ -32,7 +32,7 @@ const PokemonList = (props: PokemonListProps) => {
     const { loadingData, pokemonData } = props
     
     return (
-        <Container fluid className="h-100">
+        <Container fluid className="h-100" style={{ marginTop: '0.5em' }}>
             { loadingData && (
                 <Row className="align-items-center">
                     <Col className="text-center" id="loading-data-image">
