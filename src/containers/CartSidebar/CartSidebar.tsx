@@ -1,9 +1,15 @@
 import * as React from 'react'
 import { Col, Row, Button, Container } from 'react-bootstrap'
-import styled from 'styled-components'
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
 import { connect } from 'react-redux'
 import { StoreState } from '../../store/types/storeState'
 import { PokemonData } from '../../store/types/pokemonDataTypes'
+import * as actions from '../../store/actions'
+
+import styled from 'styled-components'
+import { Dispatch } from 'redux'
 
 interface ICartSidebar {
     isOpen: boolean
@@ -13,6 +19,7 @@ interface ICartSidebar {
 type CartSidebarType = {
     isOpen: boolean
     cartList?: Array<PokemonData>
+    removeItem?: (id: number) => void
 }
 
 class CartSidebar extends React.Component<CartSidebarType, any> {
@@ -21,7 +28,7 @@ class CartSidebar extends React.Component<CartSidebarType, any> {
     }
 
     render() {
-        const { isOpen = false, cartList } = this.props
+        const { isOpen = false, cartList, removeItem } = this.props
         let total = 0
 
         const SideBarContainer = styled.div`
@@ -55,11 +62,15 @@ class CartSidebar extends React.Component<CartSidebarType, any> {
                             return (
                                 <Row key={item.id} style={{
                                     borderBottom: "1px solid",
-                                    paddingLeft: 9
+                                    padding: '0px 10px'
                                 }}>
                                     <Col lg={2} md={3} sm={3} xs={3} style={{ padding: 0 }}><img src={item.image} width="100%" height="100%" /></Col>
                                     <Col className="align-self-center text-center">{item.name}</Col>
                                     <Col lg={4} md={3} sm={3} xs={3} className="align-self-center text-right">R$ <span>{item.price.toLocaleString('pt-br')}</span></Col>
+                                    <Col lg={1} md={1} sm={1} xs={2} className="align-self-center">
+                                        <Icon icon={faTimes} 
+                                            onClick={() => removeItem(item.id)}
+                                            style={{ cursor: 'pointer' }}/></Col>
                                 </Row>
                             )
                         })
@@ -86,4 +97,8 @@ const mapStateToProps = ({ cartStore: { isOpen, cartList } }: StoreState) => ({
     cartList
 })
 
-export default connect(mapStateToProps)(CartSidebar)
+const mapDispatchToProps = (dispatch: Dispatch<actions.RemoveItemCart>) => ({
+    removeItem: (id: number) => dispatch(actions.removeItemCart(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartSidebar)
