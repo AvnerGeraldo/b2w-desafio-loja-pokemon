@@ -23,7 +23,8 @@ const reducer = (state:StatePokemonData = initialState, action: PokemonDataActio
         case SET_LOADING_DATA:
             return {
                 ...state,
-                loadingData: action.payload
+                loadingData: action.payload,
+                data: []
             }
         
         case UPDATE_PAGE:
