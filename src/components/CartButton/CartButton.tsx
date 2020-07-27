@@ -10,7 +10,7 @@ import { Button, Badge } from 'react-bootstrap'
 
 interface CartButtonProps {
     isOpen: boolean
-    openClose: any
+    openClose: (status: boolean) => void
 }
 
 const CartButton = (props: CartButtonProps) => {
