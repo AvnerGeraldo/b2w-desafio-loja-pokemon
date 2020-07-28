@@ -3,6 +3,9 @@ import { Container, Pagination } from 'react-bootstrap'
 import { connect } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../assets/themes/aqua/aqua.css';
+import '../../assets/themes/fire/fire.css';
+
 
 import TopBar from '../TopBar/TopBar'
 import PokemonList from '../PokemonList/PokemonList';
@@ -101,11 +104,20 @@ class App extends React.Component<any, StateApp> {
     }
 
     render() {
-        const { cartIsOpen, page, pokemonDataList } = this.props
+        const { theme, cartIsOpen, page, pokemonDataList } = this.props
         const qtyTotalPages = parseInt(localStorage.getItem('qtyPages'))
+
+        const themeStyles = (theme: string): string => {
+            switch (theme) {
+                case 'fire':
+                    return 'fireTheme'
+                default:
+                    return 'aquaTheme'
+            }
+        }
         
         return (
-            <Container fluid>
+            <Container fluid id={themeStyles(theme)}>
                 <TopBar 
                     loadLocalStorage={this.getPokemonListLocalStorage}
                     setPage={this.setPage} />

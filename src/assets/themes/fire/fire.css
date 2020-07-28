@@ -1,124 +1,131 @@
-#topBar {
+#fireTheme #topBar {
     background-image: url('./background-fire.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#topBar .logo {
+#fireTheme #topBar .logo {
     content: url('./gym-fire.png');
     max-width: 6.4rem;
     margin-top: -12px;
 }
 
-#topBar .cart-button {
+#fireTheme #topBar .cart-button {
     border-color: #FF4040;
     color: rgba(0, 0, 0, 0.6);
     font-weight: 700;
     background-color: rgba(255, 64, 64, 0.9);
 }
 
-#topBar .cart-button .badge-light {
+#fireTheme #topBar .cart-button .badge-light {
     color: #212529;
     margin-left: 5px;
 }
 
 
-#topBar .cart-button .btn-outline-info {
+#fireTheme #topBar .cart-button .btn-outline-info {
     color: #007bff;
     border-color: #007bff;
 }
 
-#topBar .cart-button .btn-outline-info.focus, #topBar .cart-button .btn-outline-info:focus {
+#fireTheme #topBar .cart-button .btn-outline-info.focus, #topBar .cart-button .btn-outline-info:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255,.5) !important;
 }
 
-#topBar .cart-button .btn.focus, #topBar .cart-button .btn:focus {
+#fireTheme #topBar .cart-button .btn.focus, #topBar .cart-button .btn:focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
-#searchBar .btn-primary {
+#fireTheme #searchBar .btn-primary {
     color: rgba(0, 0, 0, 0.6);
     font-weight: 700;
     background-color: rgba(255, 64, 64, 0.7);
     border-color: rgba(255, 64, 64, 1);
 }
 
-#sideBarContainer {
+#fireTheme #searchBar .btn-primary.focus, 
+#fireTheme #searchBar .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 64, 64, 0.7);
+}
+
+
+
+#fireTheme #sideBarContainer {
     background-color: rgba(255, 64, 64, 1);
     color: rgba(0, 0, 0, 0.6);
 }
 
-#sideBarContainer .pokemon-cart-list .pokemon-item-name {
+#fireTheme #sideBarContainer .pokemon-cart-list .pokemon-item-name {
     text-transform: capitalize;
 }
 
-#sideBarContainer .pokemon-cart-list .close-button svg:hover {
+#fireTheme #sideBarContainer .pokemon-cart-list .close-button svg:hover {
     color: rgba(0, 0, 0, 0.8);
 }
 
-.pokemon-list .pokemon-list-item .btn {
+#fireTheme .pokemon-list .pokemon-list-item .btn {
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
     border-color: rgba(0, 0, 0, 0.5);
 }
 
-.container-pokemon-item .btn-primary:not(:disabled):not(.disabled).active:focus, 
-.container-pokemon-item .btn-primary:not(:disabled):not(.disabled):active:focus, 
-.show>.container-pokemon-item .btn-primary.dropdown-toggle:focus {
+#fireTheme .container-pokemon-item .btn-primary:not(:disabled):not(.disabled).active:focus, 
+#fireTheme .container-pokemon-item .btn-primary:not(:disabled):not(.disabled):active:focus, 
+.show>#fireTheme .container-pokemon-item .btn-primary.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 0, 0,.5);
 }
 
-.container-pokemon-item .btn-primary:not(:disabled):not(.disabled).active, 
-.container-pokemon-item .btn-primary:not(:disabled):not(.disabled):active, 
-.show>.container-pokemon-item .btn-primary.dropdown-toggle {
+#fireTheme .container-pokemon-item .btn-primary:not(:disabled):not(.disabled).active, 
+#fireTheme .container-pokemon-item .btn-primary:not(:disabled):not(.disabled):active, 
+.show>#fireTheme .container-pokemon-item .btn-primary.dropdown-toggle {
     color: #fff;
     background-color: rgba(0, 0, 0,.8);
     border-color: rgba(0, 0, 0,.6);
 }
 
-.container-pokemon-item .btn-primary.focus, 
-.container-pokemon-item .btn-primary:focus {
+#fireTheme .container-pokemon-item .btn-primary.focus, 
+#fireTheme .container-pokemon-item .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 0, 0,.6);
 }
 
 
-#sideBarContainer .btn-primary {
+#fireTheme #sideBarContainer .btn-primary {
     color: rgba(0, 0, 0, 0.6);
     background-color: #CD3333;
     border-color: #CD3333;
 }
 
-#sideBarContainer .btn-primary:hover {
+#fireTheme #sideBarContainer .btn-primary:hover {
     color: rgba(0, 0, 0, 0.8);
     background-color: #8B2323;
     border-color: #8B2323;
 }
 
-#sideBarContainer .btn-primary.disabled, #sideBarContainer .btn-primary:disabled {
+#fireTheme #sideBarContainer .btn-primary.disabled, #sideBarContainer .btn-primary:disabled {
     color: rgba(0, 0, 0, 0.8);
     background-color: #FF7256;
     border-color: #FF7256;
 }
 
-.container-pokemon-item {
+#fireTheme .container-pokemon-item {
     box-shadow: 3px 3px 4px rgba(255, 64, 64, 0.3);
     background-color: rgba(255, 64, 64, 0.1);
 }
 
-.container-pokemon-item:hover {
+#fireTheme .container-pokemon-item:hover {
     background-color: #FF4040;
 }
 
-.page-link {
+#fireTheme .page-link {
     color: #8B1A1A;
 }
 
-a.page-link:hover {
+#fireTheme a.page-link:hover {
     background-color: rgba(255, 64, 64, 0.6);
 }
 
-.modal-content {
+#fireTheme .modal-content {
     background: #F5F5F5;
     border: 18px solid rgba(0, 123, 255,0.13);
 }

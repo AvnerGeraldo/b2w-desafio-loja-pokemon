@@ -1,86 +1,84 @@
-body {
-    background-color: #F5F5F5;
-}
-
-#topBar {
+#aquaTheme #topBar {
     background-image: url('./background-aqua.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#topBar .logo {
+#aquaTheme #topBar .logo {
     content: url('./gym-aqua.png');
     max-width: 5.5rem;
     margin-top: -12px;
 }
 
-#topBar .cart-button {
+#aquaTheme #topBar .cart-button {
     border-color: #007bff;
     color: #fff;
     font-weight: 700;
     background-color: rgba(0, 123, 255,0.7);
 }
 
-#topBar .cart-button .badge-light {
+#aquaTheme #topBar .cart-button .badge-light {
     color: #007bff;
     margin-left: 5px;
 }
 
 
-#topBar .cart-button .btn-outline-info {
+#aquaTheme #topBar .cart-button .btn-outline-info {
     color: #007bff;
     border-color: #007bff;
 }
 
-#topBar .cart-button .btn-outline-info.focus, #topBar .cart-button .btn-outline-info:focus {
+#aquaTheme #topBar .cart-button .btn-outline-info.focus, 
+#aquaTheme #topBar .cart-button .btn-outline-info:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255,.5) !important;
 }
 
-#topBar .cart-button .btn.focus, #topBar .cart-button .btn:focus {
+#aquaTheme #topBar .cart-button .btn.focus, 
+#aquaTheme #topBar .cart-button .btn:focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
-#searchBar .btn-primary {
+#aquaTheme #searchBar .btn-primary {
     color: #fff;
     font-weight: 700;
     background-color: rgba(0, 123, 255,0.7);
     border-color: rgba(0, 123, 255, 1);
 }
 
-#sideBarContainer {
+#aquaTheme #sideBarContainer {
     background-color: rgba(0, 123, 255,0.8);
 }
 
-#sideBarContainer .pokemon-cart-list .pokemon-item-name {
+#aquaTheme #sideBarContainer .pokemon-cart-list .pokemon-item-name {
     text-transform: capitalize;
 }
 
-#sideBarContainer .pokemon-cart-list .close-button svg:hover {
+#aquaTheme #sideBarContainer .pokemon-cart-list .close-button svg:hover {
     color: #4682B4;
 }
 
-.pokemon-list .pokemon-list-item .btn {
+#aquaTheme .pokemon-list .pokemon-list-item .btn {
     color: #fff;
     background-color: rgba(0, 123, 255,0.8);
     border-color: rgba(0, 123, 255,0.8);
 }
 
-.container-pokemon-item {
+#aquaTheme .container-pokemon-item {
     border: 2px solid #CAE1FF;
     box-shadow: 3px 3px 4px #ADD8E6;
     background-color: #CAE1FF;
 }
 
-.container-pokemon-item:hover {
+#aquaTheme .container-pokemon-item:hover {
     background-color: #ADD8E6;
 }
 
-a.page-link:hover {
+#aquaTheme a.page-link:hover {
     background-color: rgba(0, 123, 255,0.6);
 }
 
-.modal-content {
+#aquaTheme .modal-content {
     background: #F5F5F5;
     border: 18px solid rgba(0, 123, 255,0.13);
 }
