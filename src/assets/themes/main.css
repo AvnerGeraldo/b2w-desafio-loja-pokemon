@@ -1,0 +1,8 @@
+body {
+    background-color: #F5F5F5;
+}
+
+.container-pokemon-item {
+    box-shadow: 3px 3px 4px #fff;
+    background-color: #fff;
+}

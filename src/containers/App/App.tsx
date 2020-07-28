@@ -3,6 +3,7 @@ import { Container, Pagination } from 'react-bootstrap'
 import { connect } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../assets/themes/main.css';
 import '../../assets/themes/aqua/aqua.css';
 import '../../assets/themes/fire/fire.css';
 
