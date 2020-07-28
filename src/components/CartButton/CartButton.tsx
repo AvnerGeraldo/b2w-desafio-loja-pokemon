@@ -26,7 +26,7 @@ const CartButton = (props: CartButtonProps) => {
             minWidth: '75px'
         }}
             variant="outline-info"
-            className="cart-button"
+            className="cart-button float-right"
             onClick={() => props.openClose(!props.isOpen)}>
             <Icon icon={faShoppingCart} /> <Badge variant="light">{props.cartList.length || ''}</Badge>
             <span className="sr-only">cart items</span>
