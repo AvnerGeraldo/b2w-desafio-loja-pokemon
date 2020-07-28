@@ -34,5 +34,7 @@ export const fetchPokemonByName = async (pokemonName: string) => {
         mode: 'cors'
     })
 
+    if (!response.ok) return {}
+
     return await response.json()
 }

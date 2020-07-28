@@ -32,8 +32,8 @@ class SearchBar extends React.Component<ISearchBar, ISearchBarState> {
     }
 
     checkPokemonExist = async (textPokemon: string) => {
-        const fetchByName = [await fetchPokemonByName(textPokemon)]
-        return fetchByName.length > 0
+        const fetchByName = await fetchPokemonByName(textPokemon)
+        return Object.keys(fetchByName).length > 0
     }
 
     searchPokemonInList = (pokemonList: Array<Array<PokemonData>>, pokemonName: string) => {
