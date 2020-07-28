@@ -1,5 +1,5 @@
 const path = require('path')
-const { HtmlWebpackPlugin, CleanWebpackPlugin } = require('./webpack-plugins')
+const { HtmlWebpackPlugin, CleanWebpackPlugin, MiniCssExtractPlugin} = require('./webpack-plugins')
 
 module.exports = {
     entry: {
@@ -30,7 +30,7 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
-            },
+              },
             {
                 test:/\.(png|svg|jpg|gif)$/,
                 use: 'file-loader'
@@ -43,6 +43,7 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
+        new MiniCssExtractPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve('src', 'index.html')
