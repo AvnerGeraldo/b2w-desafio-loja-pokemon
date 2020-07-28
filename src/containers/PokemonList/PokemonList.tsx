@@ -10,11 +10,9 @@ import * as types from '../../store/types/pokemonDataTypes'
 const loadingImage = require('../../assets/images/loading-image.gif')
 
 const ColPokemonItem = styled.div`
-    border: 2px solid #ADD8E6;
     padding: 5px 0px;
-    box-shadow: 3px 3px 4px #ADD8E6;
     cursor: pointer;
-    margin: 2px 5px;
+    margin: 5px;
 
     &:hover {
         background-color: #ADD8E6;
@@ -54,7 +52,7 @@ const PokemonList = (props: PokemonListProps) => {
             <Container className="pokemon-list" fluid>
                 <Row className="justify-content-center">
                     {(pokemonData && pokemonData.length > 0) && pokemonData.map((v: types.PokemonData) => (
-                        <ColPokemonItem key={v.id} className="col-lg-2 col-md-4 col-sm-3 col-12">
+                        <ColPokemonItem key={v.id} className="col-lg-2 col-md-4 col-sm-3 col-12 container-pokemon-item">
                             <PokemonItem id={v.id} name={v.name} price={v.price} image={v.image} />
                         </ColPokemonItem>
                     ))}

@@ -65,7 +65,7 @@ class CartSidebar extends React.Component<CartSidebarType, any> {
         `
 
         return (
-            <SideBarContainer className="col-lg-3 col-md-5 col-sm-5 col-xs-12 col-12">
+            <SideBarContainer id="sideBarContainer" className="col-lg-3 col-md-5 col-sm-5 col-xs-12 col-12">
                 <Row>
                     <Col className="text-center sb-2 mb-2 lb-2" style={{
                         padding: '5px 15px'
@@ -74,7 +74,7 @@ class CartSidebar extends React.Component<CartSidebarType, any> {
                 <Container fluid style={{
                     minHeight: '30vh',
                     padding: '0px 2px'
-                }}>
+                }} className="pokemon-cart-list">
                     {(cartList && cartList.length > 0) && (
                         cartList.map((item: PokemonData) => {
                             total += item.price
@@ -84,9 +84,9 @@ class CartSidebar extends React.Component<CartSidebarType, any> {
                                     padding: '0px 10px'
                                 }}>
                                     <Col lg={2} md={3} sm={3} xs={3} style={{ padding: 0 }}><img src={item.image} width="100%" height="100%" /></Col>
-                                    <Col className="align-self-center text-center">{item.name}</Col>
+                                    <Col className="align-self-center text-center pokemon-item-name">{item.name}</Col>
                                     <Col lg={4} md={3} sm={3} xs={3} className="align-self-center text-right">R$ <span>{item.price.toLocaleString('pt-br')}</span></Col>
-                                    <Col lg={1} md={1} sm={1} xs={2} className="align-self-center">
+                                    <Col lg={1} md={1} sm={1} xs={2} className="align-self-center close-button">
                                         <Icon icon={faTimes} 
                                             onClick={() => removeItem(item.id)}
                                             style={{ cursor: 'pointer' }}/></Col>
@@ -96,8 +96,8 @@ class CartSidebar extends React.Component<CartSidebarType, any> {
                     )}
                 </Container>
                 <Row style={{ padding: '2px' }}>
-                    <Col lg={8} md={7} sm={7} xs={8}><h4>Total</h4></Col>
-                    <Col lg={4} md={5} sm={5} xs={4} className="text-right" style={{
+                    <Col lg={6} md={5} sm={5} xs={6}><h4>Total</h4></Col>
+                    <Col lg={6} md={7} sm={7} xs={6} className="text-right" style={{
                         padding: '2px 15px'
                     }}>R$ <span>{total.toLocaleString('pt-br')}</span></Col>
                 </Row>

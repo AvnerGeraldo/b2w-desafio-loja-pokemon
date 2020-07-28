@@ -1,7 +1,8 @@
-.modal-content{
-    border: 18px solid red;
-}
-
 .modal-header {
     border-bottom: none;
+}
+
+.modal-content .heart-ame {
+    font-size: 39px;
+    color: red;
 }

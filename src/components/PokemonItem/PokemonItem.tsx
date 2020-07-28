@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { Button, Col, Container } from 'react-bootstrap'
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 import { PokemonData } from '../../store/types/pokemonDataTypes'
 import { StoreState } from '../../store/types/storeState'
@@ -44,7 +46,7 @@ const PokemonItem = (props: IPokemonItem) => {
             <Col className="text-center text-capitalize pokemon-name"><span>{name}</span></Col>
             <Col className="text-center mt-1 mb-2 pokemon-price">R$ <span>{price.toLocaleString('pt-br')}</span></Col>
             <Col className="text-center">
-                <Button onClick={() => addToCart(props)}>Adicionar <i>Icon cart</i></Button>
+                <Button onClick={() => addToCart(props)}>Adicionar <Icon icon={faCartPlus} /></Button>
             </Col>
         </Container>
     )

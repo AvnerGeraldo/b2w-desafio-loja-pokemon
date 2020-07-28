@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { InputGroup, Button, FormControl } from 'react-bootstrap'
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { fetchPokemonByName } from '../../api'
 import { StoreState } from '../../store/types/storeState'
@@ -128,7 +130,7 @@ class SearchBar extends React.Component<ISearchBar, ISearchBarState> {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.onChange(e)}
                     value={this.state.textPokemon} />
                 <InputGroup.Append>
-                    <Button onClick={async() => await this.manageSearch(this.state.textPokemon)}>Click me</Button>
+                    <Button onClick={async() => await this.manageSearch(this.state.textPokemon)}><Icon icon={faSearch} /></Button>
                 </InputGroup.Append>
             </InputGroup>
         )
