@@ -10,19 +10,17 @@ import App from '../containers/App/App'
   
 const RouterComponent = () => (
     <Router>
-        <div>
-            <Switch>
-                <Route path="/" exact={true}>
-                    <Redirect to="aqua-theme" />
-                </Route>
-                <Route path="/aqua-theme">
-                    <App theme='aqua' />
-                </Route>
-                <Route path="/fire-theme">
-                    <App theme='fire' />
-                </Route>
-            </Switch>
-        </div>
+        <Switch>
+            <Route path="/" exact={true}>
+                <Redirect to="aqua-theme" />
+            </Route>
+            <Route path="/aqua-theme">
+                <App theme='aqua' />
+            </Route>
+            <Route path="/fire-theme">
+                <App theme='fire' />
+            </Route>
+        </Switch>
     </Router>
 )
 export default RouterComponent
