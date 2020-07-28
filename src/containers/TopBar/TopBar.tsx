@@ -22,8 +22,7 @@ const TopBar = (props: any) => {
             <Col md={{ span: 7, offset: 1, order: 2}} sm={{ span: 12, order: 3 }} xs={{ span: 12, order: 3 }} id="searchBar">
                 <Row>
                     <Col lg={1} md={1} sm={1} xs={2} className="align-self-center">
-                        <Button>
-                            <Icon icon={faBars} title="Trocar temas" onClick={() => {
+                        <Button onClick={() => {
                                 const urlTheme = window.location.pathname.split('/')[1]
 
                                 if (urlTheme === 'fire-theme') {
@@ -33,7 +32,8 @@ const TopBar = (props: any) => {
 
                                 props.history.push("fire-theme");
                                 return
-                            }}/>
+                            }}>
+                            <Icon icon={faBars} title="Trocar temas" />
                         </Button>
                     </Col>
                     <Col>
