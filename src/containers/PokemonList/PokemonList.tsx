@@ -15,7 +15,6 @@ const ColPokemonItem = styled.div`
     margin: 5px;
 
     &:hover {
-        background-color: #ADD8E6;
         opacity: 0.8;
     }
 `
