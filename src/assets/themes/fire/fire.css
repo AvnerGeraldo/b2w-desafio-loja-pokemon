@@ -102,7 +102,8 @@
     border-color: #8B2323;
 }
 
-#fireTheme #sideBarContainer .btn-primary.disabled, #sideBarContainer .btn-primary:disabled {
+#fireTheme #sideBarContainer .btn-primary.disabled, 
+#fireTheme #sideBarContainer .btn-primary:disabled {
     color: rgba(0, 0, 0, 0.8);
     background-color: #FF7256;
     border-color: #FF7256;
