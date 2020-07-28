@@ -64,12 +64,6 @@
     border-color: rgba(0, 123, 255,0.8);
 }
 
-#aquaTheme .container-pokemon-item {
-    border: 2px solid #CAE1FF;
-    box-shadow: 3px 3px 4px #ADD8E6;
-    background-color: #CAE1FF;
-}
-
 #aquaTheme .container-pokemon-item:hover {
     background-color: #ADD8E6;
 }

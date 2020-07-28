@@ -109,11 +109,6 @@
     border-color: #FF7256;
 }
 
-#fireTheme .container-pokemon-item {
-    box-shadow: 3px 3px 4px rgba(255, 64, 64, 0.3);
-    background-color: rgba(255, 64, 64, 0.1);
-}
-
 #fireTheme .container-pokemon-item:hover {
     background-color: #FF4040;
 }
