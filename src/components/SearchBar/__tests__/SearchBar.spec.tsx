@@ -5,8 +5,8 @@ import SearchBar from '../SearchBar';
 import { Provider } from 'react-redux';
 import store from '../../../store';
 
-const loadLocalStorage = (offset: number, limit: number) => ({})
-const setPage = (newPage: number) => ({ })
+const loadLocalStorage = () => ({})
+const setPage = () => ({ })
 
 describe('SearchBar Component', () => {
     it('should change the value when a user types something', () => {
